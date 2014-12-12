@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# 1418345326188
+
+CACHE:
+/js/main-min.js
+
+/css/app-min.css
+/css/fonts/fonticons.ttf
+/css/fonts/fonticons.woff
+
+/img/apple-touch-icon.png
+/img/logoForWhite440.png
+/img/logoForBlue600.png
+
+
+NETWORK:
+*
