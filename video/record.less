@@ -1,11 +1,18 @@
 @import (reference) "../css/colors";
 @import (reference) "../css/elements";
+@import (reference) '../landing/css/landingcommon';
+@import "../landing/css/landing";
+@import "../landing/css/about";
 
 iframe[seamless]{
     background-color: transparent;
     border: 0px none transparent;
     padding: 0px;
     overflow: hidden;
+}
+
+html {
+    opacity: 1;
 }
 
 body {
@@ -15,7 +22,7 @@ body {
 
     // .scale(1.5, 1.5);
     .transform-origin(0, 0);
-    .translate(5px, 5px);
+    .translate(0, 5px);
 }
 
 * {
@@ -44,7 +51,6 @@ body {
     top: 0px;
     left: 0px;
 
-    opacity: 0;
 
     #videoFrame {
         position: absolute;
