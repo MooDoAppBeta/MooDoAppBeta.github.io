@@ -207,18 +207,6 @@ function runAnimations()
         var e = el(id);
         var width = e.getBoundingClientRect().width;
         e.innerHTML = '<span>' + nonfade + '</span><span class="fadeIn1s">' + fade + '</span>';
-        // var width2 = e.getBoundingClientRect().width;
-        // offset += -width2 / 2;
-        // if(delay)
-        // {
-        //     setTimeout(function(){
-        //         setStyle(time, id, transform, 'translate(' + offset + 'px,' + y + 'px)');
-        //     }, delay);
-        // }
-        // else
-        //     setStyle(time, id, transform, 'translate(' + offset + 'px,' + y + 'px)');
-
-        // log(width, width2);
     }
     function setHTML(time, id, html)
     {
@@ -239,9 +227,9 @@ function runAnimations()
         var e = el(id);
         e.innerText = text;
     }
-    function sendMsg(time, id, data)
+    function sendMsg(time, data)
     {
-        sendFrameMessage(id, data);
+        sendFrameMessage('demoIntro', data);
     }
     function loadDemo(time, name, script)
     {
@@ -260,6 +248,7 @@ function runAnimations()
     }
 
 
+
     var animQueue = [];
     var animIndex = -1;
 
@@ -276,14 +265,22 @@ function runAnimations()
         animQueue.push(msg);
     }
 
+    var isPaused = false;
+    var stoppedFromPause = false;
+
     function runNext()
     {
         do
         {
+            if (isPaused)
+            {
+                stoppedFromPause = true;
+                return;
+            }
             animIndex ++;
 
             var next = animQueue[animIndex];
-            if(next)
+            if (next)
             {
                 if(!isNaN(next))
                 {
@@ -301,7 +298,7 @@ function runAnimations()
                 next.splice(1, 1);
                 fn.apply(fn, next);
             }
-        } while(next)
+        } while (next)
     }
 
 
@@ -314,15 +311,16 @@ function runAnimations()
     q(0, move, 'demoIntroWrapper', 315, demoPos);
     d(500);
 
+
     q(1000, show, 'i1Title');
     q(1000, show, 'i1Title2');
-    q(0, fadeText, 'i1Title', '', 'Organize all your stuff');
+    q(0, fadeText, 'i1Title', '', 'Organize everything');
     d(2000);
     q(0, show, 'i1Cards');
     for(var i = 0; i < 6; i ++)
     {
         q(200, show, 'i1C' + i);
-        q(200, setStyle, 'i1C' + i, 'box-shadow', '0 1px 4px rgba(0,0,0,0.3)');
+        q(200, setStyle, 'i1C' + i, 'boxShadow', '0 1px 4px rgba(0,0,0,0.3)');
         d(140);
     }
     d(1000);
@@ -330,7 +328,7 @@ function runAnimations()
     q(1000, move, 'i1Cards', 0, cardsPos + 40);
     for(var i = 0; i < 6; i ++)
     {
-        q(1000, setStyle, 'i1C' + i, 'box-shadow', '');
+        q(1000, setStyle, 'i1C' + i, 'boxShadow', '');
         q(1000, move, 'i1C' + i, 0, -i * 20);
     }
     d(200);
@@ -341,7 +339,7 @@ function runAnimations()
 
     d(1500);
     q(1000, fadeText, 'i1Title2', 'together ', 'in a simple outline');
-    // wait('z');
+
     q(0, setStyle, 'i1CardsEls', 'overflow', 'hidden');
     for(var i = 0; i < 6; i ++)
     {
@@ -362,10 +360,11 @@ function runAnimations()
     q(0, setText, 'i1Title', '');
 
     q(1000, setStyle, 'demoIntroWrapper', 'opacity', 1);
-    q(0, sendMsg, 'demoIntro', 'start');
+    q(0, sendMsg, 'start');
+    q(0, sendMsg, 'video');
 
 
-    q(0, move, 'i1Title', -110, 15);
+    q(0, move, 'i1Title', -115, 15);
     q(0, fadeText, 'i1Title', '', 'This is your email');
 
 
@@ -380,6 +379,7 @@ function runAnimations()
     q(1000, move, 'i1Title', -270, 15);
     q(1000, move, 'i1Title2', 25, 15);
 
+
     wait('showEmails');
 
     q(1000, fadeText, 'i1Title', 'This is your email', ' on');
@@ -387,10 +387,6 @@ function runAnimations()
     q(1000, move, 'i1Title', -225, 15);
     q(1000, move, 'i1Title2', -50, 15);
 
-
-    // q(60, type, 'i1Title', 'This is your email on your todo list');
-    // q(1000, move, 'i1Title', 0, 15);
-    // q(1000, hide, 'i1Title2');
 
     wait('showAgenda');
     q(0, hide, 'i1Title2');
@@ -400,16 +396,11 @@ function runAnimations()
 
 
     wait('done');
-    // q(1000, hide, 'i1Title');
-    // d(1000);
-    // q(0, fadeText, 'i1Title', '', '');
-    // q(0, show, 'i1Title');
-
     // q(0, fadeText, 'i1Title', '', 'This is a live demo. Try it!');
     q(1000, hide, 'demoIntroWrapper');
     q(1000, hide, 'i1Title');
     d(1000);
-    q(0, move, 'i1Title', -150, 15);
+    q(0, move, 'i1Title', -180, 15);
     q(0, setText, 'i1Title', 'Organize however you want');
     d(100);
     q(1000, show, 'i1Title');
@@ -420,26 +411,33 @@ function runAnimations()
     q(1000, fadeText, 'i1Title', 'Organize ', 'with kanban boards');
     d(1500);
     q(1000, show, 'demoIntroWrapper');
+    d(1000);
     q(0, startScript, 'kanban');
     wait('done');
+    d(1000);
 
-    q(0, setHTML, 'i1Title', 'Organize <span class="fadeOut500ms">with kanban boards</span>');
+    // q(0, setHTML, 'i1Title', 'Organize <span class="fadeOut500ms">with kanban boards</span>');
+    q(1000, hide, 'i1Title');
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'gtd');
-    q(0, move, 'i1Title', -150, 15);
+    q(0, move, 'i1Title', -130, 15);
+    d(100);
     q(1000, fadeText, 'i1Title', 'Organize ', 'with GTD');
+    q(1000, show, 'i1Title');
     d(1000);
     q(1000, show, 'demoIntroWrapper');
     d(1000);
     q(0, startScript, 'gtd');
     wait('done');
+    d(1000);
 
     q(1000, hide, 'i1Title');
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'project');
-    q(0, move, 'i1Title', -170, 15);
+    q(0, move, 'i1Title', -180, 15);
+    d(100);
     q(0, setText, 'i1Title', 'Manage your team\'s projects');
     q(1000, show, 'i1Title');
     d(1000);
@@ -447,12 +445,14 @@ function runAnimations()
     d(1000);
     q(0, startScript, 'projectManagement');
     wait('done');
+    d(1000);
 
     q(1000, hide, 'i1Title');
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'inbox');
     q(0, move, 'i1Title', -130, 15);
+    d(100);
     q(0, setText, 'i1Title', 'Achieve Inbox Zero');
     q(1000, show, 'i1Title');
     d(1000);
@@ -460,36 +460,21 @@ function runAnimations()
     d(1000);
     q(0, startScript, 'inboxZero');
     wait('done');
-
-
-
-    d(1000000);
-
-/*
-
-    wait('showDemos');
-    q(1000, addClass, 'introDemoBG', 'show');
-    d(1000000);
-    q(1000, setStyle, 'i1Title', 'opacity', 0);
-    q(1000, setStyle, 'i1Subtitle', 'opacity', 0);
     d(1000);
 
-    q(0, setStyle, 'introDemoElements', 'opacity', 1);
-    var a1 = [].slice.call(el('introDemoTop').children);
-    var a2 = [].slice.call(el('introDemoBottom').children);
+    q(1000, hide, 'i1Title');
+    q(1000, hide, 'demoIntroWrapper');
+    d(1000);
+    q(0, loadDemo, 'inbox');
+    q(0, move, 'i1Title', -190, 220);
+    q(0, move, 'i1Title2', -100, 370);
+    d(100);
+    q(0, setText, 'i1Title', 'Organize everything, your way');
+    q(0, setHTML, 'i1Title2', '<a >http://moo.do</a>');
+    q(1000, show, 'i1Title');
+    q(1000, show, 'i1Title2');
 
-    q(1000, move, 'demoIntroWrapper', 0, demoPos + 50);
-    q(0, addClass, 'demoIntro', 'demoShrink');
-    var demos = [el('introTopSubtitle')]
-                .concat(a1)
-                .concat([el('introBotSubtitle')]
-                .concat(a2));
-    for(var i = 0; i < demos.length; i ++)
-    {
-        q(1000, show, demos[i]);
-        d(200);
-    }
-*/
+
 
     runNext();
 }
