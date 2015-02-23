@@ -305,6 +305,11 @@ function runAnimations()
     // Starting positions
     var cardsPos = 70;
     var demoPos = cardsPos;
+    q(0, hide, 'i1Title');
+    q(0, hide, 'i1Title2');
+    q(0, setText, 'i1Title2', '');
+    q(0, hide, 'demoIntroWrapper');
+    q(0, setStyle, 'i1Cards', 'display', '');
     q(0, move, 'i1Title', -135, 15);
     q(0, move, 'i1Title2', -135, 50);
     q(0, move, 'i1Cards', 0, cardsPos);
@@ -312,10 +317,13 @@ function runAnimations()
     d(500);
 
 
+    // Intro
     q(1000, show, 'i1Title');
     q(1000, show, 'i1Title2');
     q(0, fadeText, 'i1Title', '', 'Organize everything');
     d(2000);
+
+    // Plop out the cards
     q(0, show, 'i1Cards');
     for(var i = 0; i < 6; i ++)
     {
@@ -325,6 +333,7 @@ function runAnimations()
     }
     d(1000);
 
+    // Bring the cards together
     q(1000, move, 'i1Cards', 0, cardsPos + 40);
     for(var i = 0; i < 6; i ++)
     {
@@ -337,6 +346,7 @@ function runAnimations()
 
     q(0, addClass, 'i1Cards', 'show');
 
+    // Indent the cards
     d(1500);
     q(1000, fadeText, 'i1Title2', 'together ', 'in a simple outline');
 
@@ -350,26 +360,28 @@ function runAnimations()
             x = 100;
         q(1000, move, 'i1C' + i, x, -i * 20);
     }
+
+    // Fade out
     d(2000);
     q(1000, setStyle, 'i1Cards', 'opacity', 0);
     q(1000, setStyle, 'i1Title', 'opacity', 0);
     q(1000, setStyle, 'i1Title2', 'opacity', 0);
     d(1000);
+    q(0, setStyle, 'i1Cards', 'display', 'none');
 
+    // Fade into email
     q(1000, setStyle, 'i1Title', 'opacity', 1);
     q(0, setText, 'i1Title', '');
-
     q(1000, setStyle, 'demoIntroWrapper', 'opacity', 1);
     q(0, sendMsg, 'start');
     q(0, sendMsg, 'video');
-
-
     q(0, move, 'i1Title', -115, 15);
     q(0, fadeText, 'i1Title', '', 'This is your email');
 
 
     wait('showSecondPane');
 
+    // Show two panes
     q(1000, move, 'demoIntroWrapper', 160, demoPos);
     q(1000, fadeText, 'i1Title', 'This is your email', '');
     q(0, setStyle, 'i1Title2', 'opacity', 1);
@@ -382,23 +394,35 @@ function runAnimations()
 
     wait('showEmails');
 
+    // Email on todo list
     q(1000, fadeText, 'i1Title', 'This is your email', ' on');
     q(0, setHTML, 'i1Title2', '<span class="fadeOut500ms">This is </span><span>your todo list</span>');
     q(1000, move, 'i1Title', -225, 15);
-    q(1000, move, 'i1Title2', -50, 15);
+    q(1000, move, 'i1Title2', -48, 15);
 
 
-    wait('showAgenda');
-    q(0, hide, 'i1Title2');
-    q(1000, fadeText, 'i1Title', 'This is your emails and todo list ', 'on your calendar');
-    q(1000, move, 'i1Title', -320, 15);
+    d(1500);
+
+    // Show three panes
+   wait('showAgenda');
+
+    // Email and tasks on calendar
     q(1000, move, 'demoIntroWrapper', 0, demoPos);
+    q(0, setHTML, 'i1Title', '<span>This is your email</span><span class="fadeOut500ms"> on</span>');
+    q(0, setHTML, 'i1Title2', '<span style="visibility: hidden;">This is </span><span class="fadeOut500ms">your </span><span>todo list</span><span class="fadeIn1s"> on your calendar</span>');
+    d(200);
+    q(1000, move, 'i1Title', -290, 15);
+    q(1000, move, 'i1Title2', -163, 15);
+    d(300);
+    q(0, setHTML, 'i1Title', '<span>This is your email</span><span class="fadeIn1s"> and</span>');
 
 
     wait('done');
-    // q(0, fadeText, 'i1Title', '', 'This is a live demo. Try it!');
+
+    // Show the next set of demos
     q(1000, hide, 'demoIntroWrapper');
     q(1000, hide, 'i1Title');
+    q(1000, hide, 'i1Title2');
     d(1000);
     q(0, move, 'i1Title', -180, 15);
     q(0, setText, 'i1Title', 'Organize however you want');
@@ -416,12 +440,11 @@ function runAnimations()
     wait('done');
     d(1000);
 
-    // q(0, setHTML, 'i1Title', 'Organize <span class="fadeOut500ms">with kanban boards</span>');
     q(1000, hide, 'i1Title');
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'gtd');
-    q(0, move, 'i1Title', -130, 15);
+    q(0, move, 'i1Title', -120, 15);
     d(100);
     q(1000, fadeText, 'i1Title', 'Organize ', 'with GTD');
     q(1000, show, 'i1Title');
@@ -467,7 +490,7 @@ function runAnimations()
     d(1000);
     q(0, loadDemo, 'inbox');
     q(0, move, 'i1Title', -190, 220);
-    q(0, move, 'i1Title2', -100, 370);
+    q(0, move, 'i1Title2', -100, 270);
     d(100);
     q(0, setText, 'i1Title', 'Organize everything, your way');
     q(0, setHTML, 'i1Title2', '<a >http://moo.do</a>');
