@@ -847,7 +847,7 @@ img {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: 500px;
+  height: 600px;
   margin: 0 auto;
 }
 #intro .a {
@@ -1807,6 +1807,7 @@ body {
   width: 1024px !important;
   height: 576px !important;
   overflow: visible !important;
+  margin-top: 40px;
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
   -o-transform: scale(1.25);

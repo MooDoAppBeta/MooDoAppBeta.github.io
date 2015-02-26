@@ -301,26 +301,28 @@ function runAnimations()
         } while (next)
     }
 
+    d(2000);
+
 
     // Starting positions
-    var cardsPos = 70;
-    var demoPos = cardsPos;
+    var cardsPos = 80;
+    var demoPos = cardsPos - 10;
     q(0, hide, 'i1Title');
     q(0, hide, 'i1Title2');
     q(0, setText, 'i1Title2', '');
     q(0, hide, 'demoIntroWrapper');
     q(0, setStyle, 'i1Cards', 'display', '');
-    q(0, move, 'i1Title', -135, 15);
-    q(0, move, 'i1Title2', -135, 50);
+    q(0, move, 'i1Title', -135, 25);
+    q(0, move, 'i1Title2', -135, 60);
     q(0, move, 'i1Cards', 0, cardsPos);
     q(0, move, 'demoIntroWrapper', 315, demoPos);
+    q(0, setText, 'i1Title', 'Organize everything');
     d(500);
 
 
     // Intro
-    q(1000, show, 'i1Title');
     q(1000, show, 'i1Title2');
-    q(0, fadeText, 'i1Title', '', 'Organize everything');
+    q(1000, show, 'i1Title');
     d(2000);
 
     // Plop out the cards
@@ -375,7 +377,7 @@ function runAnimations()
     q(1000, setStyle, 'demoIntroWrapper', 'opacity', 1);
     q(0, sendMsg, 'start');
     q(0, sendMsg, 'video');
-    q(0, move, 'i1Title', -115, 15);
+    q(0, move, 'i1Title', -115, 25);
     q(0, fadeText, 'i1Title', '', 'This is your email');
 
 
@@ -385,11 +387,11 @@ function runAnimations()
     q(1000, move, 'demoIntroWrapper', 160, demoPos);
     q(1000, fadeText, 'i1Title', 'This is your email', '');
     q(0, setStyle, 'i1Title2', 'opacity', 1);
-    q(0, move, 'i1Title2', 190, 15);
+    q(0, move, 'i1Title2', 190, 25);
     q(0, fadeText, 'i1Title2', '', '', 200);
     q(1000, fadeText, 'i1Title2', '', 'This is your todo list');
-    q(1000, move, 'i1Title', -270, 15);
-    q(1000, move, 'i1Title2', 25, 15);
+    q(1000, move, 'i1Title', -270, 25);
+    q(1000, move, 'i1Title2', 25, 25);
 
 
     wait('showEmails');
@@ -397,8 +399,8 @@ function runAnimations()
     // Email on todo list
     q(1000, fadeText, 'i1Title', 'This is your email', ' on');
     q(0, setHTML, 'i1Title2', '<span class="fadeOut500ms">This is </span><span>your todo list</span>');
-    q(1000, move, 'i1Title', -225, 15);
-    q(1000, move, 'i1Title2', -48, 15);
+    q(1000, move, 'i1Title', -225, 25);
+    q(1000, move, 'i1Title2', -48, 25);
 
 
     d(1500);
@@ -411,8 +413,8 @@ function runAnimations()
     q(0, setHTML, 'i1Title', '<span>This is your email</span><span class="fadeOut500ms"> on</span>');
     q(0, setHTML, 'i1Title2', '<span style="visibility: hidden;">This is </span><span class="fadeOut500ms">your </span><span>todo list</span><span class="fadeIn1s"> on your calendar</span>');
     d(200);
-    q(1000, move, 'i1Title', -290, 15);
-    q(1000, move, 'i1Title2', -163, 15);
+    q(1000, move, 'i1Title', -290, 25);
+    q(1000, move, 'i1Title2', -163, 25);
     d(300);
     q(0, setHTML, 'i1Title', '<span>This is your email</span><span class="fadeIn1s"> and</span>');
 
@@ -424,10 +426,11 @@ function runAnimations()
     q(1000, hide, 'i1Title');
     q(1000, hide, 'i1Title2');
     d(1000);
-    q(0, move, 'i1Title', -180, 15);
+    q(0, move, 'i1Title', -180, 25);
     q(0, setText, 'i1Title', 'Organize however you want');
     d(100);
     q(1000, show, 'i1Title');
+    q(0, sendMsg, 'demoIntroWider');
     q(0, loadDemo, 'kanban');
     d(2500);
     q(0, setHTML, 'i1Title', 'Organize <span class="fadeOut500ms">however you want</span>');
@@ -444,7 +447,7 @@ function runAnimations()
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'gtd');
-    q(0, move, 'i1Title', -120, 15);
+    q(0, move, 'i1Title', -120, 25);
     d(100);
     q(1000, fadeText, 'i1Title', 'Organize ', 'with GTD');
     q(1000, show, 'i1Title');
@@ -459,7 +462,7 @@ function runAnimations()
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'project');
-    q(0, move, 'i1Title', -180, 15);
+    q(0, move, 'i1Title', -180, 25);
     d(100);
     q(0, setText, 'i1Title', 'Manage your team\'s projects');
     q(1000, show, 'i1Title');
@@ -474,7 +477,7 @@ function runAnimations()
     q(1000, hide, 'demoIntroWrapper');
     d(1000);
     q(0, loadDemo, 'inbox');
-    q(0, move, 'i1Title', -130, 15);
+    q(0, move, 'i1Title', -130, 25);
     d(100);
     q(0, setText, 'i1Title', 'Achieve Inbox Zero');
     q(1000, show, 'i1Title');

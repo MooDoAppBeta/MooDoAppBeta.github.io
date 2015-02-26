@@ -127,6 +127,10 @@ hr {
 .mobile .socialIcons a i {
   font-size: 24px;
 }
+.mobile .ytVideo {
+  max-width: 100%;
+  height: auto !important;
+}
 html:not(.mobile) .mobileOnly {
   display: none !important;
 }
@@ -162,7 +166,7 @@ html:not(.mobile) .mobileOnly {
   padding: 6px 16px !important;
   color: white;
   border-radius: 3px;
-  font-weight: 500;
+  font-weight: bold;
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -o-transition: all 300ms;
@@ -307,6 +311,9 @@ html:not(.mobile) .mobileOnly {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   background: white;
 }
+html:not(.windows) #sectionMailbird {
+  display: none;
+}
 #pricingCards {
   margin: 0 auto;
   max-width: 640px;
@@ -333,7 +340,7 @@ html:not(.mobile) .mobileOnly {
   margin-bottom: 16px;
 }
 #pricingCards .cardTitle {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: bold;
 }
 #pricingCards .premium .cardTitle {
@@ -556,18 +563,28 @@ a:hover,
   height: 36px;
   color: #666;
 }
+.platform img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.6;
+}
+.platform a {
+  vertical-align: middle;
+}
 .platform div {
   line-height: 36px;
 }
 .platform [class^="icon-"],
-.platform [class*=" icon-"] {
+.platform [class*=" icon-"],
+.platform img {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   -o-transition: all 300ms;
   transition: all 300ms;
 }
 .platform:hover [class^="icon-"],
-.platform:hover [class*=" icon-"] {
+.platform:hover [class*=" icon-"],
+.platform:hover img {
   -webkit-transform: scale(1.3);
   -moz-transform: scale(1.3);
   -o-transform: scale(1.3);
@@ -596,6 +613,7 @@ a:hover,
 .platforms .platformComingSoon {
   color: #777;
   margin-bottom: 16px;
+  font-size: 18px;
 }
 .platforms .signup {
   height: 60px;
@@ -676,6 +694,37 @@ a:hover,
 .signupbox input[type="submit"]:hover {
   background: #2bbeff;
 }
+.borderedList {
+  list-style-type: none;
+  border-left: 1px solid #e3e3e3;
+  text-align: left;
+}
+.colorHigh {
+  color: #f30;
+}
+.colorMed {
+  color: #f80;
+}
+.colorLow {
+  color: #fc3;
+}
+.starred {
+  background: #ffb;
+  display: inline-block;
+  font-weight: normal;
+}
+.complete {
+  color: #d6d6d6;
+}
+.contact {
+  color: #22aa66 !important;
+}
+.tag {
+  color: #0099dd !important;
+}
+.date {
+  color: #aa3300 !important;
+}
 /*****************************************************************************/
 /*
 /* Common
@@ -700,6 +749,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   font-size: 16px;
+  word-wrap: break-word;
 }
 .post,
 .postContent {
@@ -754,13 +804,6 @@ ul + p {
   margin-bottom: 60px;
 }
 @media screen and (max-width: 920px) {
-  .postContent > *:not(.demo),
-  .postExcerpt > *:not(.demo),
-  .postHeader,
-  #social {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   .postContent > .demo img {
     margin-left: 10px;
     margin-right: 10px;
@@ -852,8 +895,11 @@ a:hover {
   max-width: 100%;
   background: white;
 }
-.content {
+html:not(.mobile) .content {
   margin-top: 60px;
+}
+.mobile .content {
+  margin-top: 20px;
 }
 .headerContent {
   margin: 0 auto;
