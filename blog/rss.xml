@@ -8,7 +8,134 @@
     <title>Moo.do</title>
     <link>http://www.moo.do/blog</link>
     <description>Moo.do - Organize your way</description>
-    <pubDate>Tue, 26 Sep 2017 00:00:00 -0700</pubDate>
+    <pubDate>Fri, 03 Nov 2017 00:00:00 -0700</pubDate>
+    <item>
+      <title>November Update</title>
+      <link>http://www.moo.do/blog/november-update</link>
+      <description><![CDATA[
+    var els = document.getElementsByClassName('updateDesignHotkey');
+    var isMac = navigator.userAgent.indexOf('Mac') >= 0;
+    for (var i = 0; i 
+
+
+.postImgVideo video {
+    display: block;
+    width: 100%;
+}
+.postImgNovDesign {
+    margin: 24px auto;
+    width: 300px;
+}
+.postImgNovDesign.postImgVideo {
+    width: 440px;
+}
+.postImgNovDesign.postImgNovWide {
+    width: 600px;
+}
+
+
+In this update we have a variety of updates mainly focused on improving the iOS and Android apps.
+
+General
+
+Zooming in the overview fades items out of view and displays the zoomed item with bold text. This makes it easier to jump between projects.
+
+    
+        
+    
+
+Standard Gmail labels have icons for easier navigation between labels. Open the overview or click the title in the top bar to switch.
+
+iOS and Android
+
+The top bar now shows the currently zoomed item as well as the hierarchy above it. Search and filter are in a second bar that hides when you scroll down. View search again by scrolling back up.
+The keyboard toolbar is larger and more attractive. It saves your scroll position so the buttons you last used are always visible.
+
+
+The email preview has arrows at the top to navigate between emails, and a toolbar at the bottom for common actions.
+
+
+The overview has a dark background and larger spacing for items, for easier navigation.
+
+
+Desktop
+
+The pane header is rearranged to put item titles on the bottom row, with the zoomed item in big bold text. All of the action buttons are together at the right side, and search is centered on the top row.
+
+
+
+Agenda blocks are collapsible, so you can hide the blocks you don&#39;t care to see right now. This state is saved per-pane.
+
+Help us improve
+
+As always, please let us know if you find any issues or how we can make our apps better for you. Thanks!
+]]></description>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 -0700</pubDate>
+      <guid>http://www.moo.do/blog/november-update</guid>
+      <content:encoded><![CDATA[<script>
+    var els = document.getElementsByClassName('updateDesignHotkey');
+    var isMac = navigator.userAgent.indexOf('Mac') >= 0;
+    for (var i = 0; i < els.length; i ++)
+    {
+        els[i].textContent = (isMac ? 'Ctrl' : 'Alt');
+    }
+</script>
+
+<style>
+.postImgVideo video {
+    display: block;
+    width: 100%;
+}
+.postImgNovDesign {
+    margin: 24px auto;
+    width: 300px;
+}
+.postImgNovDesign.postImgVideo {
+    width: 440px;
+}
+.postImgNovDesign.postImgNovWide {
+    width: 600px;
+}
+</style>
+
+<p>In this update we have a variety of updates mainly focused on improving the iOS and Android apps.</p>
+
+<h1>General</h1>
+
+<p>Zooming in the overview fades items out of view and displays the zoomed item with bold text. This makes it easier to jump between projects.
+<div class="postImg postImgVideo postImgNovDesign">
+    <video loop muted playsinline autoplay poster="/img/help/basics/overview.png">
+        <source src="/img/help/basics/overview.mp4" type="video/mp4">
+    </video>
+</div>
+Standard Gmail labels have icons for easier navigation between labels. Open the overview or click the title in the top bar to switch.</p>
+
+<h1>iOS and Android</h1>
+
+<p>The top bar now shows the currently zoomed item as well as the hierarchy above it. Search and filter are in a second bar that hides when you scroll down. View search again by scrolling back up.
+The keyboard toolbar is larger and more attractive. It saves your scroll position so the buttons you last used are always visible.
+<img class="postImg postImgNovDesign" src="/blog/img/update-november-mobile1.png"></img></p>
+
+<p>The email preview has arrows at the top to navigate between emails, and a toolbar at the bottom for common actions.
+<img class="postImg postImgNovDesign" src="/blog/img/update-november-mobile2.png"></img></p>
+
+<p>The overview has a dark background and larger spacing for items, for easier navigation.
+<img class="postImg postImgNovDesign" src="/blog/img/update-november-mobile3.png"></img></p>
+
+<h1>Desktop</h1>
+
+<p>The pane header is rearranged to put item titles on the bottom row, with the zoomed item in big bold text. All of the action buttons are together at the right side, and search is centered on the top row.</p>
+
+<p><img class="postImg postImgNovDesign postImgNovWide" src="/blog/img/update-november-desktop.png"></img></p>
+
+<p>Agenda blocks are collapsible, so you can hide the blocks you don&#39;t care to see right now. This state is saved per-pane.</p>
+
+<h1>Help us improve</h1>
+
+<p>As always, please let us know if you find any issues or how we can make our apps better for you. Thanks!</p>
+]]></content:encoded>
+      <dc:date>2017-11-03T00:00:00-07:00</dc:date>
+    </item>
     <item>
       <title>International Dates</title>
       <link>http://www.moo.do/blog/international-dates</link>
@@ -3555,6 +3682,6 @@ contact@moo.do
 ]]></content:encoded>
       <dc:date>2014-06-11T00:00:00-07:00</dc:date>
     </item>
-    <dc:date>2017-09-26T00:00:00-07:00</dc:date>
+    <dc:date>2017-11-03T00:00:00-07:00</dc:date>
   </channel>
 </rss>
