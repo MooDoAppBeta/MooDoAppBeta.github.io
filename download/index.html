@@ -52,7 +52,7 @@
             var url = 'https://github.com/MooDoApp/MooDoApp.github.io/releases/download/1.0.9/Moo.do-1.0.9-mac.zip',
                 userAgent = navigator.userAgent;
 
-            if (false)//userAgent.indexOf('Mac') !== -1)
+            if (userAgent.indexOf('Mac') !== -1)
             {
                 window.location = url;
             }
