@@ -8047,7 +8047,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var hrExcerpt = '<p>---excerpt---</p>';
+var hrExcerpt = '<p>##EXCERPT##</p>';
 
 var Post = function (_React$Component) {
     _inherits(Post, _React$Component);
@@ -8067,14 +8067,16 @@ var Post = function (_React$Component) {
                 post = props.post,
                 contents = post.contents;
 
-            if (!props.excerpt && typeof window !== 'undefined') {
+            if (typeof window !== 'undefined') {
                 window.__addDemo = function (demo) {
-                    _this2.loadDemos([demo]);
+                    if (!props.excerpt) _this2.loadDemos([demo]);
                 };
                 window.__addDemos = function (arr) {
-                    _this2.loadDemos(arr);
+                    if (!props.excerpt) _this2.loadDemos(arr);
                 };
+            }
 
+            if (!props.excerpt && typeof window !== 'undefined') {
                 // Google+
                 (function () {
                     var po = document.createElement('script');
@@ -8176,13 +8178,13 @@ var Post = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'post', id: post.uid ? 'post_' + post.uid : undefined },
+                { className: 'post padded', id: post.uid ? 'post_' + post.uid : undefined },
                 _react2.default.createElement(
                     'div',
                     { className: 'postHeader' + (post.image ? ' withImage' : '') },
                     _react2.default.createElement(
                         'header',
-                        { className: 'padded' },
+                        null,
                         _react2.default.createElement(
                             _reactStatic.Link,
                             { to: '/blog/' + post.slug, prefetch: false },
@@ -8191,7 +8193,7 @@ var Post = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'postMetadata padded' },
+                        { className: 'postMetadata' },
                         _react2.default.createElement(
                             'span',
                             { className: 'postDate' },
@@ -8217,10 +8219,10 @@ var Post = function (_React$Component) {
                         )
                     )
                 ),
-                post.image && _react2.default.createElement('img', { className: 'postImg postImgFull', src: post.image }),
                 _react2.default.createElement(
                     'div',
-                    { className: 'postContent padded' },
+                    { className: 'postContent' },
+                    post.image && _react2.default.createElement('img', { className: 'postImg postImgFull postImgHero', src: post.image }),
                     _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: contents } }),
                     props.excerpt && _react2.default.createElement(
                         'div',
@@ -8241,7 +8243,7 @@ var Post = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'div',
-                        { id: 'social', className: 'padded' },
+                        { id: 'social' },
                         _react2.default.createElement('span', { id: 'shareFB', className: 'fb-share-button', 'data-href': 'https://www.moo.do/blog/' + post.slug, 'data-type': 'button' }),
                         _react2.default.createElement(
                             'a',
@@ -8273,4 +8275,4 @@ module.exports = require("htmr");
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.f75a92e2.js.map
+//# sourceMappingURL=static.1ae42376.js.map
