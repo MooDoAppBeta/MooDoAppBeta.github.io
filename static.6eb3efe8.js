@@ -5866,22 +5866,22 @@ exports.default = (0, _reactHotLoader.hot)(module)(function () {
                 ' you will see a "Use beta version" checkbox in the ',
                 _react2.default.createElement(
                     'span',
-                    { 'class': 'onlyMac' },
+                    { className: 'onlyMac' },
                     'Moo.do'
                 ),
                 _react2.default.createElement(
                     'span',
-                    { 'class': 'onlyWin' },
+                    { className: 'onlyWin' },
                     'File'
                 ),
                 ' menu to toggle between the beta version and the normal version.',
                 _react2.default.createElement(
                     'span',
-                    { 'class': 'onlyWin' },
+                    { className: 'onlyWin' },
                     ' You may need to press ',
                     _react2.default.createElement(
                         'span',
-                        { 'class': 'hotkey' },
+                        { className: 'hotkey' },
                         'Alt'
                     ),
                     ' to open the File menu.'
@@ -8310,4 +8310,4 @@ module.exports = require("htmr");
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.06698b24.js.map
+//# sourceMappingURL=static.6eb3efe8.js.map

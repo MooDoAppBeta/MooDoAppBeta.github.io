@@ -59,7 +59,7 @@ h1 {
   margin-top: 2em;
   margin-bottom: 0.25em;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 32px;
 }
 h1 + h2 {
   margin-top: 1em;
@@ -78,7 +78,7 @@ h2 {
   margin-top: 2em;
   margin-bottom: 0.5em;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 24px;
 }
 .loaded body {
   opacity: 1;
