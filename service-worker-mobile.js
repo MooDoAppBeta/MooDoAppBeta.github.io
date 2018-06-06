@@ -1,5 +1,5 @@
-var CacheName = 'moodo-cache-1528288384522',
-    CacheNameCommon = 'moodo-cache-data';
+var CacheName = 'moodo-cache-1528272776087',
+    CacheNameCommon = 'moodo-cache-common';
 
 function notifyClient(text)
 {
@@ -21,16 +21,16 @@ self.addEventListener('install', function (e)
         caches.open(CacheName).then(function (cache)
         {
             return cache.addAll([
-                '/web/',
-                '/web/index-1528288384522.html',
-                '/web/js/vendor-1528288384522.js',
-                '/web/js/delayedUI-1528288384522.js',
-                '/web/js/dimport-1528288384522.js',
-                '/web/js/main-min-1528288384522.js',
-                '/web/js/preload-min-1528288384522.js',
-                '/web/css/app-min-1528288384522.css',
-                '/web/css/fonts/fonticons-1528288384522.woff',
-                '/web/css/fonts/fonticons-1528288384522.ttf'
+                '/appmobile/',
+                '/appmobile/index-1528272776087.html',
+                '/appmobile/js/vendor-1528272776087.js',
+                '/appmobile/js/delayedUI-1528272776087.js',
+                '/appmobile/js/dimport-1528272776087.js',
+                '/appmobile/js/main-min-1528272776087.js',
+                '/appmobile/js/preload-min-1528272776087.js',
+                '/appmobile/css/app-min-1528272776087.css',
+                '/appmobile/css/fonts/fonticons-1528272776087.woff',
+                '/appmobile/css/fonts/fonticons-1528272776087.ttf'
             ]);
         }).then(caches.open(CacheNameCommon).then(function (cacheCommon)
         {
@@ -62,7 +62,7 @@ self.addEventListener('install', function (e)
     );
 });
 
-var pathname = '/web/';
+var pathname = '/appmobile/';
 
 self.addEventListener('fetch', function (event)
 {
@@ -73,16 +73,25 @@ self.addEventListener('fetch', function (event)
     {
         if (urlObj.pathname === pathname)
         {
-            url = url.replace(pathname, pathname + 'index-1528288384522.html');
+            url = url.replace(pathname, pathname + 'index-1528272776087.html');
         }
 
         event.respondWith(
             caches.match(url).then(function (response)
             {
-                return response || fetch(event.request);
-            }).catch(function () { })
+                return response || fetch(event.request).then(function (response2)
+                {
+                    var response3 = response2.clone();
+                    caches.open(CacheNameCommon).then(function (cache)
+                    {
+                        cache.put(event.request, response3.clone());
+                    })
+                    return response2;
+                });
+            })
         );
     }
+
 });
 
 self.addEventListener('activate', function (event)
